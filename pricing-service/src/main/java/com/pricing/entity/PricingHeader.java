@@ -16,7 +16,7 @@ public class PricingHeader {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="pricing_header_id")
-	private long id;
+	private long pricingHeaderId;
 	
 	@Column(name="start_date",nullable=false)
 	private Date startDate;
@@ -43,11 +43,11 @@ public class PricingHeader {
 	}
 
 	public long getId() {
-		return id;
+		return pricingHeaderId;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		this.pricingHeaderId = id;
 	}
 
 	public Date getEndDate() {
