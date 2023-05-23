@@ -14,7 +14,7 @@ public class Ports {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="port_id")
-	private long portid;
+	private long portId;
 	
 	@Column(name="port_code")
 	private String portCode;
@@ -36,12 +36,12 @@ public class Ports {
 		this.portManager = portManager;
 	}
 
-	public long getPortid() {
-		return portid;
+	public long getPortId() {
+		return portId;
 	}
 
-	public void setPortid(long portid) {
-		this.portid = portid;
+	public void setPortId(long portId) {
+		this.portId = portId;
 	}
 
 	public String getPortCode() {
@@ -67,6 +67,8 @@ public class Ports {
 	public void setPortManager(String portManager) {
 		this.portManager = portManager;
 	}
+
+
 	
 	
 }

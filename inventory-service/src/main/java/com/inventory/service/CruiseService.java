@@ -9,12 +9,15 @@ public interface CruiseService {
 
 	public List<Cruise> findAllCruise();
 	
-	public Cruise findCruiseById(Long id);
+	public Cruise findCruiseById(Long cruiseId);
 	
 	public void createCruise(Cruise cruise);
 	
 	public void updateCruise(Cruise cruise);
 	
-	public void deleteCruise(Long id);
+	public void deleteCruise(Long cruiseId);
+	
+	public List<Cruise> searchCruise(String keyword);
+
 
 }

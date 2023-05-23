@@ -7,15 +7,15 @@ import com.inventory.entity.Inventory;
 public interface InventoryService {
 	
 
-	public List<Inventory> findAllInventory();
+	public List<Inventory>findAllInventory();
 	
-	public Inventory findInventoryById(Long id);
+	public Inventory findInventoryById(Long inventoryId);
 	
 	public void createInventory(Inventory inventory);
 	
 	public void updateInventory(Inventory inventory);
 	
-	public void deleteInventory(Long id);
+	public void deleteInventory(Long inventoryId);
 	
 
 }

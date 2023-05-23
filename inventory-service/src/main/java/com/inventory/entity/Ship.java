@@ -15,7 +15,7 @@ public class Ship {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	
 	@Column(name="ship_id")
-	private long shipid;
+	private long shipId;
 	
 	@Column(name="ship_name")
 	private String shipName;
@@ -33,12 +33,12 @@ public class Ship {
 		this.capacity = capacity;
 	}
 
-	public long getShipid() {
-		return shipid;
+	public long getShipId() {
+		return shipId;
 	}
 
-	public void setShipid(long shipid) {
-		this.shipid = shipid;
+	public void setShipId(long shipId) {
+		this.shipId = shipId;
 	}
 
 	public String getShipName() {
@@ -56,6 +56,7 @@ public class Ship {
 	public void setCapacity(String capacity) {
 		this.capacity = capacity;
 	}
+
 	
 
 }

@@ -1,5 +1,7 @@
 package com.pricing.entity;
 
+import com.inventory.entity.Cruise;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
