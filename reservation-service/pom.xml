@@ -6,4 +6,16 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>reservation-service</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.parent</groupId>
+  		<artifactId>pricing-service</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.parent</groupId>
+  		<artifactId>inventory-service</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>

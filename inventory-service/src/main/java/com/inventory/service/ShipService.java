@@ -9,13 +9,13 @@ public interface ShipService {
 	
 public List<Ship> findAllShip();
 	
-	public Ship findShipById(Long id);
+	public Ship findShipById(Long shipId);
 	
 	public void createShip(Ship ship);
 	
 	public void updateShip(Ship ship);
 	
-	public void deleteShip(Long id);
+	public void deleteShip(Long shipId);
 
 
 }
