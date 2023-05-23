@@ -18,10 +18,10 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="booking_id")
-	private Long booking_id;
+	private Long bookingId;
 	
 	@Column(name="no_of_passenger")
-	private Integer no_of_passenger;
+	private Integer noOfPassenger;
 	
 	@Column(name="departure")
 	private String departure;
@@ -30,13 +30,13 @@ public class Booking {
 	private String destination;
 	
 	@Column(name="date_of_travel")
-	private Date date_of_travel;
+	private Date dateOfTravel;
 	
 	@Column(name="booking_status")
-	private String booking_status;
+	private String bookingStatus;
 	
 	@Column(name="booked_date")
-	private Date booked_date;
+	private Date bookedDate;
 	
 	@OneToOne
 	@JoinColumn(name = "pay_id")
@@ -46,38 +46,38 @@ public class Booking {
 		super();		
 	}
 
-	public Booking(Integer no_of_passenger,
+	public Booking(Integer noOfPassenger,
 			String departure,
-			String destination,
-			Date date_of_travel,
-			String booking_status,
-			Date booked_date,
+			String destination, 
+			Date dateOfTravel,
+			String bookingStatus,
+			Date bookedDate,
 			Payment payment) {
 		
 		super();
-		this.no_of_passenger = no_of_passenger;
+		this.noOfPassenger = noOfPassenger;
 		this.departure = departure;
 		this.destination = destination;
-		this.date_of_travel = date_of_travel;
-		this.booking_status = booking_status;
-		this.booked_date = booked_date;
+		this.dateOfTravel = dateOfTravel;
+		this.bookingStatus = bookingStatus;
+		this.bookedDate = bookedDate;
 		this.payment = payment;
 	}
 
-	public Long getBooking_id() {
-		return booking_id;
+	public Long getBookingId() {
+		return bookingId;
 	}
 
-	public void setBooking_Id(Long booking_id) {
-		this.booking_id = booking_id;
+	public void setBookingId(Long bookingId) {
+		this.bookingId = bookingId;
 	}
 
-	public Integer getNo_of_passenger() {
-		return no_of_passenger;
+	public Integer getNoOfPassenger() {
+		return noOfPassenger;
 	}
 
-	public void setNo_of_passenger(Integer no_of_passenger) {
-		this.no_of_passenger = no_of_passenger;
+	public void setNoOfPassenger(Integer noOfPassenger) {
+		this.noOfPassenger = noOfPassenger;
 	}
 
 	public String getDeparture() {
@@ -96,28 +96,28 @@ public class Booking {
 		this.destination = destination;
 	}
 
-	public Date getDate_of_travel() {
-		return date_of_travel;
+	public Date getDateOfTravel() {
+		return dateOfTravel;
 	}
 
-	public void setDate_of_travel(Date date_of_travel) {
-		this.date_of_travel = date_of_travel;
+	public void setDateOfTravel(Date dateOfTravel) {
+		this.dateOfTravel = dateOfTravel;
 	}
 
-	public String getBooking_status() {
-		return booking_status;
+	public String getBookingStatus() {
+		return bookingStatus;
 	}
 
-	public void setBooking_status(String booking_status) {
-		this.booking_status = booking_status;
+	public void setBookingStatus(String bookingStatus) {
+		this.bookingStatus = bookingStatus;
 	}
 
-	public Date getBooked_date() {
-		return booked_date;
+	public Date getBookedDate() {
+		return bookedDate;
 	}
 
-	public void setBooked_date(Date booked_date) {
-		this.booked_date = booked_date;
+	public void setBookedDate(Date bookedDate) {
+		this.bookedDate = bookedDate;
 	}
 
 	public Payment getPayment() {
@@ -127,5 +127,6 @@ public class Booking {
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
-			
+
+				
 }

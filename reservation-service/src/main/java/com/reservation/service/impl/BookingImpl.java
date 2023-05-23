@@ -13,6 +13,11 @@ import com.reservation.service.BookingService;
 public class BookingImpl implements BookingService{
 	@Autowired
 	private BookingRepository bookingRepository;
+		
+	public BookingImpl(BookingRepository bookingRepository) {
+		super();
+		this.bookingRepository = bookingRepository;
+	}
 
 	@Override
 	public List<Booking> findAllBookings() {
@@ -21,7 +26,7 @@ public class BookingImpl implements BookingService{
 	}
 
 	@Override
-	public Booking findBookingById(Long booking_id) {
+	public Booking findBookingById(Long bookingId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -39,12 +44,10 @@ public class BookingImpl implements BookingService{
 	}
 
 	@Override
-	public void deleteBooking(Long booking_id) {
+	public void deleteBooking(Long bookingId) {
 		// TODO Auto-generated method stub
 		
 	}
-
-	
 
 	
 }

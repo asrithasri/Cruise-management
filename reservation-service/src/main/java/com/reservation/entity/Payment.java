@@ -16,41 +16,38 @@ public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="pay_id")
-	private Long pay_id;
+	private Long payId;
 	
 	@OneToOne
 	@JoinColumn(name = "booking_item_id")
 	Booking booking;
 	
 	@Column(name="total_amount")
-	private Integer total_amount;
+	private Integer totalAmount;
 	
 	@Column(name="pay_status")
-	private String pay_status;
+	private String payStatus;
 
 	public Payment() {
 		super();
 	}
 
-	public Payment(Long pay_id,
-			Booking booking,
-			Integer total_amount,
-			String pay_status) {
+	public Payment(Booking booking,
+			Integer totalAmount,
+			String payStatus) {
 		
 		super();
-		
-		this.pay_id = pay_id;
 		this.booking = booking;
-		this.total_amount = total_amount;
-		this.pay_status = pay_status;
+		this.totalAmount = totalAmount;
+		this.payStatus = payStatus;
 	}
 
-	public Long getPay_id() {
-		return pay_id;
+	public Long getPayId() {
+		return payId;
 	}
 
-	public void setPay_Id(Long pay_id) {
-		this.pay_id = pay_id;
+	public void setPayId(Long payId) {
+		this.payId = payId;
 	}
 
 	public Booking getBooking() {
@@ -61,20 +58,21 @@ public class Payment {
 		this.booking = booking;
 	}
 
-	public Integer getTotal_amount() {
-		return total_amount;
+	public Integer getTotalAmount() {
+		return totalAmount;
 	}
 
-	public void setTotal_amount(Integer total_amount) {
-		this.total_amount = total_amount;
+	public void setTotalAmount(Integer totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 
-	public String getPay_status() {
-		return pay_status;
+	public String getPayStatus() {
+		return payStatus;
 	}
 
-	public void setPay_status(String pay_status) {
-		this.pay_status = pay_status;
+	public void setPayStatus(String payStatus) {
+		this.payStatus = payStatus;
 	}
+	
 			
 }
