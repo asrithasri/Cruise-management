@@ -1,12 +1,15 @@
 package com.reservation.entity;
 
+import com.inventory.entity.Cruise;
+import com.inventory.entity.Inventory;
+import com.pricing.entity.PricingDetails;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -18,7 +21,7 @@ public class BookingItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="booking_item_id")
-	private Long booking_item_id;
+	private Long bookingItemId;
 	
 	@OneToOne
 	@JoinColumn(name = "booking_id")
@@ -52,12 +55,12 @@ public class BookingItem {
 		this.inventory = inventory;
 	}
 
-	public Long getBooking_item_id() {
-		return booking_item_id;
+	public Long getBookingItemId() {
+		return bookingItemId;
 	}
 
-	public void setBooking_item_id(Long booking_item_id) {
-		this.booking_item_id = booking_item_id;
+	public void setBookingItemId(Long bookingItemId) {
+		this.bookingItemId = bookingItemId;
 	}
 
 	public Booking getBooking() {
@@ -92,6 +95,7 @@ public class BookingItem {
 		this.inventory = inventory;
 	}
 
+	
 	
 	
 	
