@@ -8,6 +8,8 @@ import com.pricing.entity.PricingDetails;
 import com.pricing.repository.PricingDetailsRepository;
 import com.pricing.service.PricingDetailsService;
 
+import common.exception.NotFoundException;
+
 public class PricingDetailsServicImpl implements PricingDetailsService {
 	
 	@Autowired

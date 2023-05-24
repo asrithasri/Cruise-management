@@ -20,16 +20,16 @@ public class PricingDetails {
 	private String Category;
 	
 	@Column(name="adult_price",nullable=false)
-	private String adultPrice;
+	private Long adultPrice;
 	
 	@Column(name="child_price",nullable=false)
-	private String childPrice;
+	private Long childPrice;
 	
 	@OneToMany
 	@JoinColumn(name="pricing_header_id")
 	PricingHeader pricing_header;
 
-	public PricingDetails(String category, String adultPrice, String childPrice, PricingHeader pricing_header) {
+	public PricingDetails(String category, Long adultPrice, Long childPrice, PricingHeader pricing_header) {
 		super();
 		Category = category;
 		this.adultPrice = adultPrice;
@@ -57,19 +57,19 @@ public class PricingDetails {
 		Category = category;
 	}
 
-	public String getAdultPrice() {
+	public Long getAdultPrice() {
 		return adultPrice;
 	}
 
-	public void setAdultPrice(String adultPrice) {
+	public void setAdultPrice(Long adultPrice) {
 		this.adultPrice = adultPrice;
 	}
 
-	public String getChildPrice() {
+	public Long getChildPrice() {
 		return childPrice;
 	}
 
-	public void setChildPrice(String childPrice) {
+	public void setChildPrice(Long childPrice) {
 		this.childPrice = childPrice;
 	}
 
