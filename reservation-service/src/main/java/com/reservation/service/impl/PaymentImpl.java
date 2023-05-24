@@ -13,36 +13,41 @@ public class PaymentImpl implements PaymentService{
 
 	@Autowired
 	private PaymentRepository paymentRepository;
-
-	@Override
-	public List<Payment> findAllPayments() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public PaymentImpl(PaymentRepository paymentRepository) {
+		super();
+		this.paymentRepository = paymentRepository;
 	}
 
 	@Override
-	public Payment findPaymentById(Long pay_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Payment> findAllPayments() {		
+		return paymentRepository.findAll();
+	}
+
+	@Override
+	public Payment findPaymentById(Long payId) {		
+		return paymentRepository.findById(payId)
+				.orElseThrow(()-> new NotFoundException(String.format("Payment not found with ID %d",payId)));		
+		
 	}
 
 	@Override
 	public void createPayment(Payment payment) {
-		// TODO Auto-generated method stub
+		paymentRepository.save(payment);
 		
 	}
 
 	@Override
 	public void updatePayment(Payment payment) {
-		// TODO Auto-generated method stub
+		paymentRepository.save(payment);
 		
 	}
 
 	@Override
-	public void deletePayment(Long pay_id) {
-		// TODO Auto-generated method stub
-		
+	public void deletePayment(Long payId) {
+		final Payment payment = paymentRepository.findById(payId)
+				.orElseThrow(()->new NotFoundException(String.format("Payment not found with ID %d",payId)));
+		paymentRepository.deleteById(payment.getPayId());
 	}
-	
 	
 }

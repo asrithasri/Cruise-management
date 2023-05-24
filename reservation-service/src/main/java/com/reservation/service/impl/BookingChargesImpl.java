@@ -14,6 +14,11 @@ public class BookingChargesImpl implements BookingChargesService {
 	
 	@Autowired 
 	private BookingChargesRepository bookingChargesRepository;
+	
+	public BookingChargesImpl(BookingChargesRepository bookingChargesRepository) {
+		super();
+		this.bookingChargesRepository = bookingChargesRepository;
+	}
 
 	@Override
 	public List<BookingCharges> findAllBookingCharges() {
@@ -22,28 +27,30 @@ public class BookingChargesImpl implements BookingChargesService {
 	}
 
 	@Override
-	public BookingCharges findBookingChargesById(Long booking_charges_id) {
+	public BookingCharges findBookingChargesById(Long bookingChargesId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void createBookingCharges(BookingCharges booking_charges) {
+	public void createBookingCharges(BookingCharges bookingCharges) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void updateBookingItem(BookingCharges booking_charges) {
+	public void updateBookingCharges(BookingCharges bookingCharges) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteBookingCharges(Long booking_charges_id) {
+	public void deleteBookingCharges(Long bookingChargesId) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 	
 	
 }

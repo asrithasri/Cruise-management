@@ -16,20 +16,20 @@ public class Passenger {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="pass_id")
-	private Long pass_id;
+	private Long passId;
 	
 	@OneToMany
 	@JoinColumn(name = "booking_id")
 	Booking booking;
 	
 	@Column(name="passport_no")
-	private Integer passport_no;
+	private Integer passportNo;
 	
-	@Column(name="f_name")
-	private String f_name;
+	@Column(name="first_name")
+	private String firstName;
 	
-	@Column(name="l_name")
-	private String l_name;
+	@Column(name="last_name")
+	private String lastNname;
 	
 	@Column(name="sex")
 	private Character sex;
@@ -40,42 +40,44 @@ public class Passenger {
 	@Column(name="address")
 	private String address;
 	
-	@Column(name="e_mail")
-	private String e_mail;
+	@Column(name="email_id")
+	private String emailId;
 	
 	@Column(name="phone_no")
-	private Integer phone_no;
+	private Integer phoneNo;
 
 	public Passenger() {
 		super();
 	}
 
 	public Passenger(Booking booking,
-			Integer passport_no,
-			String f_name,
-			String l_name,
+			Integer passportNo,
+			String firstName,
+			String lastNname,
 			Character sex,
 			Integer age,
-			String address, String e_mail, Integer phone_no) {
+			String address,
+			String emailId,
+			Integer phoneNo) {
 		
 		super();
 		this.booking = booking;
-		this.passport_no = passport_no;
-		this.f_name = f_name;
-		this.l_name = l_name;
+		this.passportNo = passportNo;
+		this.firstName = firstName;
+		this.lastNname = lastNname;
 		this.sex = sex;
 		this.age = age;
 		this.address = address;
-		this.e_mail = e_mail;
-		this.phone_no = phone_no;
+		this.emailId = emailId;
+		this.phoneNo = phoneNo;
 	}
 
-	public Long getPass_id() {
-		return pass_id;
+	public Long getPassId() {
+		return passId;
 	}
 
-	public void setPass_id(Long pass_id) {
-		this.pass_id = pass_id;
+	public void setPassId(Long passId) {
+		this.passId = passId;
 	}
 
 	public Booking getBooking() {
@@ -86,28 +88,28 @@ public class Passenger {
 		this.booking = booking;
 	}
 
-	public Integer getPassport_no() {
-		return passport_no;
+	public Integer getPassportNo() {
+		return passportNo;
 	}
 
-	public void setPassport_no(Integer passport_no) {
-		this.passport_no = passport_no;
+	public void setPassportNo(Integer passportNo) {
+		this.passportNo = passportNo;
 	}
 
-	public String getF_name() {
-		return f_name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setF_name(String f_name) {
-		this.f_name = f_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public String getL_name() {
-		return l_name;
+	public String getLastNname() {
+		return lastNname;
 	}
 
-	public void setL_name(String l_name) {
-		this.l_name = l_name;
+	public void setLastNname(String lastNname) {
+		this.lastNname = lastNname;
 	}
 
 	public Character getSex() {
@@ -134,21 +136,23 @@ public class Passenger {
 		this.address = address;
 	}
 
-	public String getE_mail() {
-		return e_mail;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setE_mail(String e_mail) {
-		this.e_mail = e_mail;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
-	public Integer getPhone_no() {
-		return phone_no;
+	public Integer getPhoneNo() {
+		return phoneNo;
 	}
 
-	public void setPhone_no(Integer phone_no) {
-		this.phone_no = phone_no;
+	public void setPhoneNo(Integer phoneNo) {
+		this.phoneNo = phoneNo;
 	}
+
+	
 
 	
 }

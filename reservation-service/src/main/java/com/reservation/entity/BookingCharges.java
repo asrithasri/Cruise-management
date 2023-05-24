@@ -17,7 +17,7 @@ public class BookingCharges {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="booking_charges_id")
-	private Long booking_charges_id;
+	private Long bookingChargesId;
 	
 	@OneToMany
 	@JoinColumn(name = "booking_item_id")
@@ -35,23 +35,19 @@ public class BookingCharges {
 		super();
 	}
 
-	public BookingCharges(BookingItem booking_item,
-			Passenger passenger,
-			Integer price) {
-		
+	public BookingCharges(BookingItem booking_item, Passenger passenger, Integer price) {
 		super();
-		
 		this.booking_item = booking_item;
 		this.passenger = passenger;
 		this.price = price;
 	}
 
-	public Long getBooking_charges_id() {
-		return booking_charges_id;
+	public Long getBookingChargesId() {
+		return bookingChargesId;
 	}
 
-	public void setBooking_charges_id(Long booking_charges_id) {
-		this.booking_charges_id = booking_charges_id;
+	public void setBookingChargesId(Long bookingChargesId) {
+		this.bookingChargesId = bookingChargesId;
 	}
 
 	public BookingItem getBooking_item() {
@@ -77,6 +73,8 @@ public class BookingCharges {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+
+	
 
 	
 }

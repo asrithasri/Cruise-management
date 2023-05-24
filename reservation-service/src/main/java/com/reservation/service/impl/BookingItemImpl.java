@@ -13,36 +13,41 @@ public class BookingItemImpl implements BookingItemService{
 	
 	@Autowired
 	private BookingItemRepository bookingItemRepository;
+	
+	public BookingItemImpl(BookingItemRepository bookingItemRepository) {
+		super();
+		this.bookingItemRepository = bookingItemRepository;
+	}
 
 	@Override
 	public List<BookingItem> findAllPassengers() {
-		// TODO Auto-generated method stub
-		return null;
+		return bookingItemRepository.findAll();;
 	}
 
 	@Override
-	public BookingItem findBookingItemById(Long Booking_item_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public BookingItem findBookingItemById(Long BookingItemId) {		
+		return bookingItemRepository.findById(BookingItemId)
+				.orElseThrow(()-> new NotFoundException(String.format("Booking item not found with ID %d",bookingItemId)));
 	}
 
 	@Override
-	public void createBookingItem(BookingItem booking_item) {
-		// TODO Auto-generated method stub
+	public void createBookingItem(BookingItem bookingItem) {
+		bookingItemRepository.save(bookingItem);
 		
 	}
 
 	@Override
-	public void updateBookingItem(BookingItem booking_item) {
-		// TODO Auto-generated method stub
+	public void updateBookingItem(BookingItem bookingItem) {
+		bookingItemRepository.save(bookingItem);
 		
 	}
 
 	@Override
-	public void deleteBookingItem(Long booking_item_id) {
-		// TODO Auto-generated method stub
+	public void deleteBookingItem(Long bookingItemId) {
+		final BookingItem bookingItem = bookingItemRepository.findById(bookingItemId)
+				.orElseThrow(()-> new NotFoundException(String.format("Booking item not found with ID %d",bookingItemId)));
 		
 	}
-	
+
 	
 }

@@ -14,37 +14,42 @@ public class PassengerImpl implements PassengerService {
 	
 	@Autowired
 	private PassengerRepository passengerRepository;
-
-	@Override
-	public List<Passenger> findAllPassengers() {
-		// TODO Auto-generated method stub
-		return null;
+		
+	public PassengerImpl(PassengerRepository passengerRepository) {
+		super();
+		this.passengerRepository = passengerRepository;
 	}
 
 	@Override
-	public Passenger findPassengerById(Long pass_id) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Passenger> findAllPassengers() {	
+		return passengerRepository.findAll();
+	}
+
+	@Override
+	public Passenger findPassengerById(Long passId) {		
+		return passengerRepository.findById(passId)
+				.orElseThrow(()->new NotFoundException(String.format("Payment not found with ID %d",passId)));
 	}
 
 	@Override
 	public void createPassenger(Passenger passenger) {
-		// TODO Auto-generated method stub
+		passengerRepository.save(passenger);
 		
 	}
 
 	@Override
 	public void updatePassenger(Passenger passenger) {
-		// TODO Auto-generated method stub
+		passengerRepository.save(passenger);
 		
 	}
 
 	@Override
-	public void deletePassenger(Long pass_id) {
-		// TODO Auto-generated method stub
+	public void deletePassenger(Long passId) {
+		final Passenger passenger = passengerRepository.findById(passId)
+				.orElseThrow(()->new NotFoundException(String.format("Payment not found with ID %d",passId)));
 		
+		passengerRepository.deleteById(passenger.getPassId());
 	}
-	
-	
 
+	
 }
