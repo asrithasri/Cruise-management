@@ -9,5 +9,6 @@ public class CruiseManagementApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CruiseManagementApplication.class, args);
 	}
-	
+
 }
+

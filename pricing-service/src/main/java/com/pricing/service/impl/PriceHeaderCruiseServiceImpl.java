@@ -8,6 +8,8 @@ import com.pricing.entity.PriceHeaderCruise;
 import com.pricing.repository.PriceHeaderCruiseRepository;
 import com.pricing.service.PriceHeaderCruiseService;
 
+import common.exception.NotFoundException;
+
 public class PriceHeaderCruiseServiceImpl implements PriceHeaderCruiseService {
 	@Autowired
 	private PriceHeaderCruiseRepository priceHeaderCruiseRepository;
@@ -42,9 +44,9 @@ public class PriceHeaderCruiseServiceImpl implements PriceHeaderCruiseService {
 
 	@Override
 	public void deletePriceHeaderCruise(Long id) {
-		final PricingHeaderCruise pricingHeaderCruise = pricingHeaderCruiseRepository.findById(id)
+		final PriceHeaderCruise pricingHeaderCruise = priceHeaderCruiseRepository.findById(id)
 				.orElseThrow(() -> new NotFoundException(String.format("PricingHeaderCruise not Found with ID %d",id)));
-		PriceHeaderCruiseRepository.deleteById(pricingHeaderCruise.getId());
+		priceHeaderCruiseRepository.deleteById(pricingHeaderCruise.getId());
 		
 	}
 
