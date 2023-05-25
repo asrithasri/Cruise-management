@@ -35,14 +35,14 @@ public class ShipServiceImpl implements ShipService{
 	}
 
 	@Override
-	public void createShip(Ship ship) {
-		shipRepository.save(ship);
+	public Ship createShip(Ship ship) {
+		return shipRepository.save(ship);
 		
 	}
 
 	@Override
-	public void updateShip(Ship ship) {
-		shipRepository.save(ship);
+	public Ship updateShip(Ship ship) {
+		return shipRepository.save(ship);
 		
 	}
 

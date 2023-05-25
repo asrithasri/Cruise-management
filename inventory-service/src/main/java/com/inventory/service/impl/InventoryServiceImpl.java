@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inventory.entity.Cruise;
 import com.inventory.entity.Inventory;
 import com.inventory.repositoty.InventoryRepository;
 import com.inventory.service.InventoryService;
@@ -32,14 +33,17 @@ public class InventoryServiceImpl implements InventoryService {
 		.orElseThrow(()-> new NotFoundException(String.format("Inventory not found with ID %d",inventoryId)));	}
 	
 	@Override
-	public void createInventory(Inventory inventory) {
-		inventoryRepository.save(inventory);
+	public Inventory createInventory(Inventory inventory) {
+		return inventoryRepository.save(inventory);
 		
 	}
 
 	@Override
-	public void updateInventory(Inventory inventory) {
-		inventoryRepository.save(inventory);
+	public Inventory updateInventory(Inventory inventory) {
+//		Inventory existingCruise = InventoryRepository.findAll[](Inventory.getInventoryId()).get();
+//		existingCruise.setDepartureDate(Inventory.());
+//		existingCruise.setArrivalDate(inventory.getArrivalDate());
+		return inventoryRepository.save(inventory);
 		
 		
 	}
