@@ -34,14 +34,16 @@ public class BookingChargesImpl implements BookingChargesService {
 	}
 
 	@Override
-	public void createBookingCharges(BookingCharges bookingCharges) {
-		bookingChargesRepository.save(bookingCharges);
+	public BookingCharges createBookingCharges(BookingCharges bookingCharges) {
+		return bookingChargesRepository.save(bookingCharges);
 		
 	}
 
 	@Override
-	public void updateBookingCharges(BookingCharges bookingCharges) {
-		bookingChargesRepository.save(bookingCharges);
+	public BookingCharges updateBookingCharges(BookingCharges bookingCharges) {
+		BookingCharges exsistingBookingCharges = bookingChargesRepository.findById(bookingCharges.getBookingChargesId()).get();
+		exsistingBookingCharges.setPrice(bookingCharges.getPrice());
+		return bookingChargesRepository.save(exsistingBookingCharges);
 		
 	}
 

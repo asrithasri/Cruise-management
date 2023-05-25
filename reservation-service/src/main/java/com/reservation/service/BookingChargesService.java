@@ -10,9 +10,9 @@ public interface BookingChargesService {
 	
 	public BookingCharges findBookingChargesById(Long bookingChargesId);
 	
-	public void createBookingCharges(BookingCharges bookingCharges);
+	public BookingCharges createBookingCharges(BookingCharges bookingCharges);
 	
-	public void updateBookingCharges(BookingCharges bookingCharges);
+	public BookingCharges updateBookingCharges(BookingCharges bookingCharges);
 	
 	public void deleteBookingCharges(Long bookingChargesId);
 

@@ -5,10 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.reservation.entity.Booking;
+import com.reservation.entity.BookingCharges;
 import com.reservation.service.BookingChargesService;
 import com.reservation.service.BookingItemService;
 import com.reservation.service.BookingService;
@@ -16,6 +22,7 @@ import com.reservation.service.PassengerService;
 import com.reservation.service.PaymentService;
 
 @Controller
+@RequestMapping("/reservation")
 public class ReservationController {
 
 	@Autowired
@@ -40,33 +47,37 @@ public class ReservationController {
 		this.paymentService = paymentService;
 	}
 	
-	@RequestMapping("/booking")
-	public String findAllBookings(Model model) {		
-		
-		final List<Booking> bookings = bookingService.findAllBookings();
-		
-		model.addAttribute("Bookings", bookings);
-		return "list-bookings";
-		
-			
+	@GetMapping
+	public List<BookingCharges> findAllBookingCharges(){
+		return bookingChargesService.findAllBookingCharges();
 	}
 	
-	@RequestMapping("/book/{bookingId}")
-	public String findBookingById(@PathVariable("bookingId")Long bookingId, Model model) {
-		
-		final Booking booking = bookingService.findBookingById(bookingId);
-		
-		model.addAttribute("booking", booking);
-		return "list-booking";
+	@GetMapping("/{bookingChargesId}")
+	public BookingCharges findBookingChargesById(@PathVariable Long bookingChargesId) {
+		return bookingChargesService.findBookingChargesById(bookingChargesId);
 	}
 	
-	@RequestMapping("/remove-booking{bookingId}")
-	public String deleteBooking(@PathVariable("bookingId") Long bokingId, Model model) {
-		bookingService.deleteBooking(bokingId);
-		
-		model.addAttribute("booking", bookingService.findAllBookings());
-		return"redirect:/booking";
-		
+	@GetMapping("/create")
+    public String showCreateForm(Model model) {
+        model.addAttribute("bookingCharges", new BookingCharges());
+        return "create-booking-charges";
+    }
+
+    @PostMapping("/create")
+    public String createBookingCharges(BookingCharges bookingCharges) {
+        bookingChargesService.createBookingCharges(bookingCharges);
+        return "redirect:/booking-charges";
+    }
+
+	
+	@PutMapping
+	public BookingCharges updateBookingCharges(@RequestBody BookingCharges bookingCharges) {
+		return bookingChargesService.updateBookingCharges(bookingCharges);
+	
 	}
 	
+	@DeleteMapping("/{bookingChargesId}")
+	public void deleteBookingCharges(@PathVariable Long bookingChargesId) {
+	bookingChargesService.deleteBookingCharges(bookingChargesId);
+	}
 }

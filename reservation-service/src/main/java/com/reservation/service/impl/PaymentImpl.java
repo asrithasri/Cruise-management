@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.reservation.entity.Passenger;
 import com.reservation.entity.Payment;
 import com.reservation.repository.PaymentRepository;
 import com.reservation.service.PaymentService;
@@ -41,7 +42,10 @@ public class PaymentImpl implements PaymentService{
 
 	@Override
 	public Payment updatePayment(Payment payment) {
-		return paymentRepository.save(payment);
+		Payment exsistingPayment = paymentRepository.findById(payment.getPayId()).get();
+		exsistingPayment.setPayStatus(payment.getPayStatus());
+		exsistingPayment.setTotalAmount(payment.getTotalAmount());
+		return paymentRepository.save(exsistingPayment);
 		
 	}
 
