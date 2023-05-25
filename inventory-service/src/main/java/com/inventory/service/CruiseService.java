@@ -19,5 +19,7 @@ public interface CruiseService {
 	
 	public List<Cruise> searchCruise(String keyword);
 
+	public Cruise save(Cruise cruise);
+
 
 }

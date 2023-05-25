@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inventory.entity.Cruise;
 import com.inventory.entity.Segment;
 import com.inventory.repositoty.SegmentRepository;
 import com.inventory.service.SegmentService;
 
+import common.exception.NotFoundException;
+
 @Service
-public class SegmentServiceImpl implements SegmentService{
+public abstract class SegmentServiceImpl implements SegmentService{
 	
 	@Autowired
 	private SegmentRepository segmentRepository;
@@ -23,31 +26,35 @@ public class SegmentServiceImpl implements SegmentService{
 
 	@Override
 	public List<Segment> findAllSegment() {
-		// TODO Auto-generated method stub
-		return null;
+		return segmentRepository.findAll();
 	}
 
 	@Override
 	public Segment findSegmentById(Long segmentId) {
-		// TODO Auto-generated method stub
-		return null;
+		return segmentRepository.findById(segmentId)
+				.orElseThrow(() ->new NotFoundException(String.format("Segment not found with ID %d",segmentId)));
+	
 	}
 
 	@Override
 	public void createSegment(Segment segment) {
-		// TODO Auto-generated method stub
+		segmentRepository.save(segment);
 		
 	}
 
 	@Override
 	public void updateSegment(Segment segment) {
-		// TODO Auto-generated method stub
+		segmentRepository.save(segment);
 		
 	}
+		
 
 	@Override
-	public void deleteSegment(Segment segmentId) {
-		// TODO Auto-generated method stub
+	public void deleteSegment(Long segmentId) {
+		final Segment segment = segmentRepository.findById(segmentId)
+				.orElseThrow(() -> new NotFoundException(String.format("Segment not found with ID %d",segmentId)));
+		segmentRepository.deleteById(segment.getSegmentId());
+		
 		
 	}
 

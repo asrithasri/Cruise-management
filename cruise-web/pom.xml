@@ -6,4 +6,11 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>cruise-web</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>com.parent</groupId>
+  		<artifactId>inventory-service</artifactId>
+  		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
