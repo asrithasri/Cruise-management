@@ -15,6 +15,8 @@ public interface SegmentService {
 	public void updateSegment(Segment segment);
 	
 	public void deleteSegment(Segment segmentId);
+
+	void deleteSegment(Long segmentId);
 	
 	
 

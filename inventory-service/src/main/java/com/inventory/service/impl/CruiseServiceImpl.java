@@ -66,6 +66,12 @@ public class CruiseServiceImpl implements CruiseService{
 		
 	}
 
+	@Override
+	public Cruise save(Cruise cruise) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }

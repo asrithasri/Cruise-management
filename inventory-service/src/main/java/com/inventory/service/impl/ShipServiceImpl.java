@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inventory.entity.Segment;
 import com.inventory.entity.Ship;
 import com.inventory.repositoty.ShipRepository;
 import com.inventory.service.ShipService;
+
+import common.exception.NotFoundException;
 @Service
 public class ShipServiceImpl implements ShipService{
 	
@@ -21,31 +24,34 @@ public class ShipServiceImpl implements ShipService{
 	
 	@Override
 	public List<Ship> findAllShip() {
-		// TODO Auto-generated method stub
-		return null;
+		return shipRepository.findAll();
+
 	}
 
 	@Override
 	public Ship findShipById(Long shipId) {
-		// TODO Auto-generated method stub
-		return null;
+		return shipRepository.findById(shipId)
+				.orElseThrow(() ->new NotFoundException(String.format("ship not found with ID %d",shipId)));
 	}
 
 	@Override
 	public void createShip(Ship ship) {
-		// TODO Auto-generated method stub
+		shipRepository.save(ship);
 		
 	}
 
 	@Override
 	public void updateShip(Ship ship) {
-		// TODO Auto-generated method stub
+		shipRepository.save(ship);
 		
 	}
 
 	@Override
 	public void deleteShip(Long shipId) {
-		// TODO Auto-generated method stub
+		final Ship ship = shipRepository.findById(shipId)
+				.orElseThrow(() -> new NotFoundException(String.format("Ship not found with ID %d",shipId)));
+		shipRepository.deleteById(ship.getShipId());
+		
 		
 	}
 	
