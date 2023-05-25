@@ -34,14 +34,14 @@ public class PassengerImpl implements PassengerService {
 	}
 
 	@Override
-	public void createPassenger(Passenger passenger) {
-		passengerRepository.save(passenger);
+	public Passenger createPassenger(Passenger passenger) {
+		return passengerRepository.save(passenger);
 		
 	}
 
 	@Override
-	public void updatePassenger(Passenger passenger) {
-		passengerRepository.save(passenger);
+	public Passenger updatePassenger(Passenger passenger) {
+		return passengerRepository.save(passenger);
 		
 	}
 
@@ -51,6 +51,11 @@ public class PassengerImpl implements PassengerService {
 				.orElseThrow(()->new NotFoundException(String.format("Payment not found with ID %d",passId)));
 		
 		passengerRepository.deleteById(passenger.getPassId());
+	}
+
+	@Override
+	public Passenger save(Passenger passenger) {
+		return passengerRepository.save(passenger);
 	}
 
 	

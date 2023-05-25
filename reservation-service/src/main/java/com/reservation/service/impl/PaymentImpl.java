@@ -34,14 +34,14 @@ public class PaymentImpl implements PaymentService{
 	}
 
 	@Override
-	public void createPayment(Payment payment) {
-		paymentRepository.save(payment);
+	public Payment createPayment(Payment payment) {
+		return paymentRepository.save(payment);
 		
 	}
 
 	@Override
-	public void updatePayment(Payment payment) {
-		paymentRepository.save(payment);
+	public Payment updatePayment(Payment payment) {
+		return paymentRepository.save(payment);
 		
 	}
 
