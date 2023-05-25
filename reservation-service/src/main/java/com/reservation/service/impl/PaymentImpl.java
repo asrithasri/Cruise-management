@@ -8,6 +8,8 @@ import com.reservation.entity.Payment;
 import com.reservation.repository.PaymentRepository;
 import com.reservation.service.PaymentService;
 
+import common.exception.NotFoundException;
+
 @Service
 public class PaymentImpl implements PaymentService{
 
