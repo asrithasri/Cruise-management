@@ -37,14 +37,18 @@ public abstract class SegmentServiceImpl implements SegmentService{
 	}
 
 	@Override
-	public void createSegment(Segment segment) {
-		segmentRepository.save(segment);
+	public Segment createSegment(Segment segment) {
+		return segmentRepository.save(segment);
 		
 	}
 
 	@Override
-	public void updateSegment(Segment segment) {
-		segmentRepository.save(segment);
+	public Segment updateSegment(Segment segment) {
+		Segment existingSegment = segmentRepository.findById(segment.getSegmentId()).get();
+		existingSegment.setDay(segment.getDay());
+		existingSegment.setDay(segment.getDay());		
+		return segmentRepository.save(existingSegment);
+		
 		
 	}
 		

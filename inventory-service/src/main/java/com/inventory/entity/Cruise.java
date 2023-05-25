@@ -85,7 +85,8 @@ public class Cruise {
 	public void setArrivalDate(Date arrivalDate) {
 		this.arrivalDate = arrivalDate;
 	}
-	
-	
+
+
+		
 
 }

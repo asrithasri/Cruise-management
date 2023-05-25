@@ -10,9 +10,9 @@ public interface SegmentService {
 	
 	public Segment findSegmentById(Long segmentId);
 	
-	public void createSegment(Segment segment);
+	public Segment createSegment(Segment segment);
 	
-	public void updateSegment(Segment segment);
+	public Segment updateSegment(Segment segment);
 	
 	public void deleteSegment(Segment segmentId);
 

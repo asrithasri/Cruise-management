@@ -11,9 +11,9 @@ public List<Ship> findAllShip();
 	
 	public Ship findShipById(Long shipId);
 	
-	public void createShip(Ship ship);
+	public Ship createShip(Ship ship);
 	
-	public void updateShip(Ship ship);
+	public Ship updateShip(Ship ship);
 	
 	public void deleteShip(Long shipId);
 

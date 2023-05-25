@@ -1,9 +1,12 @@
 package com.inventory.service.impl;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
 import com.inventory.entity.Cruise;
 import com.inventory.repositoty.CruiseRepository;
 import com.inventory.service.CruiseService;
@@ -37,20 +40,21 @@ public class CruiseServiceImpl implements CruiseService{
 	}
 
 	@Override
-	public void createCruise(Cruise cruise) {
-		cruiseRepository.save(cruise);
+	public Cruise createCruise(@RequestBody Cruise cruise) {
+		return cruiseRepository.save(cruise);
 		
 	}
 
 	@Override
-	public void updateCruise(Cruise cruise) {
-		cruiseRepository.save(cruise);
-		
-	}
+	public  Cruise updateCruise(@RequestBody Cruise cruise){
+		return cruiseRepository.save(cruise);
+
+		 }
+
 
 	@Override
 	public void deleteCruise(Long cruiseId) {
-		final Cruise cruise = cruiseRepository.findById(cruiseId)
+		 final Cruise cruise = cruiseRepository.findById(cruiseId)
 				.orElseThrow(() -> new NotFoundException(String.format("Cruise not found with ID %d",cruiseId)));
 		cruiseRepository.deleteById(cruise.getCruiseId());
 		
@@ -68,8 +72,7 @@ public class CruiseServiceImpl implements CruiseService{
 
 	@Override
 	public Cruise save(Cruise cruise) {
-		// TODO Auto-generated method stub
-		return null;
+		return cruiseRepository.save(cruise);
 	}
 
 	

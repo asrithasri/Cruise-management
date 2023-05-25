@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inventory.entity.Cruise;
 import com.inventory.entity.Inventory;
 import com.inventory.entity.Ports;
 import com.inventory.repositoty.PortsRepository;
@@ -27,30 +28,32 @@ public class PortsServiceImpl implements PortsService{
 	}
 
 	@Override
-	public List<com.inventory.entity.Ports> findAllPorts() {
+	public List<Ports> findAllPorts() {
 		return portsRepository.findAll();
 	}
 
 	@Override
-	public com.inventory.entity.Ports findPortsById(Long portsId) {
+	public Ports findPortsById(Long portsId) {
 		return portsRepository.findById(portsId)
 				.orElseThrow(() ->new NotFoundException(String.format("ports not found with ID %d",portsId)));
 	}
 
 	@Override
-	public void createPorts(com.inventory.entity.Ports ports) {
-		portsRepository.save(ports);
+	public Ports createPorts(Ports ports) {
+		return portsRepository.save(ports);
 		
 	}
 
 	@Override
-	public void updatePorts(com.inventory.entity.Ports ports) {
-		portsRepository.save(ports);
+	public Ports updatePorts(Ports ports) { 
+		Ports existingCruise = portsRepository.findById(ports.getPortId()).get();
+		existingCruise.setPortManager(ports.getPortManager());
+		return portsRepository.save(existingCruise);
 	}
 
 	@Override
 	public void deletePorts(Long portsId) {
-		final Ports ports=portsRepository.findById(portsId)
+		 Ports ports=portsRepository.findById(portsId)
 				.orElseThrow(()->new NotFoundException(String.format("ports not found with ID %d",portsId)));
 		portsRepository.deleteById(ports.getPortId());
 		
