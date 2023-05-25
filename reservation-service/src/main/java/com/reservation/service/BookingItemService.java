@@ -8,7 +8,7 @@ public interface BookingItemService {
 	
 	public List<BookingItem> findAllPassengers();
 	
-	public BookingItem findBookingItemById(Long BookingItemId);
+	public BookingItem findBookingItemById(Long bookingItemId);
 	
 	public void createBookingItem(BookingItem bookingItem);
 	

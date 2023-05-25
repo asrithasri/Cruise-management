@@ -9,6 +9,8 @@ import com.reservation.entity.Booking;
 import com.reservation.repository.BookingRepository;
 import com.reservation.service.BookingService;
 
+import common.exception.NotFoundException;
+
 @Service
 public class BookingImpl implements BookingService{
 	@Autowired
@@ -21,32 +23,34 @@ public class BookingImpl implements BookingService{
 
 	@Override
 	public List<Booking> findAllBookings() {
-		// TODO Auto-generated method stub
-		return null;
+		return bookingRepository.findAll();
 	}
 
 	@Override
 	public Booking findBookingById(Long bookingId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return bookingRepository.findById(bookingId)
+				.orElseThrow(() -> new NotFoundException(String.format("Booking not found with ID %d", bookingId)));
 	}
 
 	@Override
 	public void createBooking(Booking booking) {
-		// TODO Auto-generated method stub
+		bookingRepository.save(booking);
 		
 	}
 
 	@Override
 	public void updateBooking(Booking booking) {
-		// TODO Auto-generated method stub
+		bookingRepository.save(booking);
 		
 	}
 
 	@Override
 	public void deleteBooking(Long bookingId) {
-		// TODO Auto-generated method stub
+		final Booking booking = bookingRepository.findById(bookingId)
+				.orElseThrow(() -> new NotFoundException(String.format("Authornnot found with ID %d", bookingId)));
 		
+		bookingRepository.deleteById(booking.getBookingId());
 	}
 
 	

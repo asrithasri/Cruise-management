@@ -9,6 +9,8 @@ import com.reservation.entity.Passenger;
 import com.reservation.repository.PassengerRepository;
 import com.reservation.service.PassengerService;
 
+import common.exception.NotFoundException;
+
 @Service
 public class PassengerImpl implements PassengerService {
 	

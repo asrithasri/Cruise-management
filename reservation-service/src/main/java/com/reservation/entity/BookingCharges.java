@@ -35,7 +35,10 @@ public class BookingCharges {
 		super();
 	}
 
-	public BookingCharges(BookingItem booking_item, Passenger passenger, Integer price) {
+	public BookingCharges(BookingItem booking_item,
+			Passenger passenger,
+			Integer price) {
+		
 		super();
 		this.booking_item = booking_item;
 		this.passenger = passenger;
@@ -73,8 +76,5 @@ public class BookingCharges {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-
-	
-
 	
 }
