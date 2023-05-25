@@ -10,9 +10,11 @@ public interface PassengerService {
 	
 	public Passenger findPassengerById(Long passId);
 	
-	public void createPassenger(Passenger passenger);
+	public Passenger createPassenger(Passenger passenger);
 	
-	public void updatePassenger(Passenger passenger);
+	public Passenger updatePassenger(Passenger passenger);
 	
 	public void deletePassenger(Long passId);
+	
+	public Passenger save (Passenger passenger);
 }

@@ -10,9 +10,9 @@ public interface PaymentService {
 	
 	public Payment findPaymentById(Long payId);
 	
-	public void createPayment(Payment payment);
+	public Payment createPayment(Payment payment);
 	
-	public void updatePayment(Payment payment);
+	public Payment updatePayment(Payment payment);
 	
 	public void deletePayment(Long payId);
 

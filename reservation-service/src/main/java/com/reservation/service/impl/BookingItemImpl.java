@@ -22,7 +22,7 @@ public class BookingItemImpl implements BookingItemService{
 	}
 
 	@Override
-	public List<BookingItem> findAllPassengers() {
+	public List<BookingItem> findAllBookingItem() {
 		return bookingItemRepository.findAll();
 	}
 
@@ -30,18 +30,6 @@ public class BookingItemImpl implements BookingItemService{
 	public BookingItem findBookingItemById(Long bookingItemId) {		
 		return bookingItemRepository.findById(bookingItemId)
 				.orElseThrow(()-> new NotFoundException(String.format("Booking item not found with ID %d",bookingItemId)));
-	}
-
-	@Override
-	public void createBookingItem(BookingItem bookingItem) {
-		bookingItemRepository.save(bookingItem);
-		
-	}
-
-	@Override
-	public void updateBookingItem(BookingItem bookingItem) {
-		bookingItemRepository.save(bookingItem);
-		
 	}
 
 	@Override
