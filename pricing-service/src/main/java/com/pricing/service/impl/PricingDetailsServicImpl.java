@@ -3,6 +3,7 @@ package com.pricing.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.pricing.entity.PricingDetails;
 import com.pricing.repository.PricingDetailsRepository;
@@ -31,16 +32,14 @@ public class PricingDetailsServicImpl implements PricingDetailsService {
 				.orElseThrow(()-> new NotFoundException(String.format("Pricing details Not found with ID %d", id)));
 	}
 
-	// check name pricing_details 
 	@Override
-	public void createPricingDetails(PricingDetails pricing_details) {
-		pricingDetailsRepository.save(pricing_details);
+	public PricingDetails updatePricingDetails(@RequestBody PricingDetails pricingDetails) {
 		
-	}
-
-	@Override
-	public void updatePricingDetails(PricingDetails pricing_details) {
-		pricingDetailsRepository.save(pricing_details);
+		PricingDetails existingPricingDetails = pricingDetailsRepository.findById(pricingDetails.getId()).get();
+		existingPricingDetails.setAdultPrice(pricingDetails.getAdultPrice());
+		existingPricingDetails.setChildPrice(pricingDetails.getChildPrice());
+		existingPricingDetails.setCategory(pricingDetails.getCategory());
+		return pricingDetailsRepository.save(pricingDetails);
 	}
 
 	@Override
@@ -50,7 +49,12 @@ public class PricingDetailsServicImpl implements PricingDetailsService {
 		pricingDetailsRepository.deleteById(pricingDetails.getId());;
 		
 	}
-	
+
+	@Override
+	public PricingDetails createPricingDetails(PricingDetails pricingDetails) {
+		
+		return null;
+	}
 	
 	
 }

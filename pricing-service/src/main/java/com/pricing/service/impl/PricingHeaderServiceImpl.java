@@ -29,13 +29,23 @@ public class PricingHeaderServiceImpl implements PricingHeaderService{
 	}
 
 	@Override
-	public void createPricingHeader(PricingHeader pricingHeader) {
-		pricingHeaderRepository.save(pricingHeader);
+	public PricingHeader createPricingHeader(PricingHeader pricingHeader) {
+		PricingHeader pHeader= new PricingHeader();
+		pHeader.setStartDate(pricingHeader.getStartDate());
+		pHeader.setEndDate(pricingHeader.getEndDate());
+		pHeader.setPricingCode(pricingHeader.getPricingCode());
+		pHeader.setPricingDescription(pricingHeader.getPricingDescription());
+		return pricingHeaderRepository.save(pHeader);
 	}
 
 	@Override
-	public void updatePricingHeader(PricingHeader pricingHeader) {
-		pricingHeaderRepository.save(pricingHeader);
+	public PricingHeader updatePricingHeader(PricingHeader pricingHeader) {
+		PricingHeader existingPricingHeader = pricingHeaderRepository.findById(pricingHeader.getId()).get();
+		existingPricingHeader.setStartDate(pricingHeader.getStartDate());
+		existingPricingHeader.setEndDate(pricingHeader.getEndDate());
+		existingPricingHeader.setPricingCode(pricingHeader.getPricingCode());
+		existingPricingHeader.setPricingDescription(pricingHeader.getPricingDescription());
+		return pricingHeaderRepository.save(existingPricingHeader);
 		
 	}
 
