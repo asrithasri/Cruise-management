@@ -11,9 +11,9 @@ public interface PricingDetailsService {
 	
 	public PricingDetails findPricingDetailsById(Long id);
 	
-	public void createPricingDetails(PricingDetails pricing_details);
+	public PricingDetails createPricingDetails(PricingDetails pricingDetails);
 	
-	public void updatePricingDetails(PricingDetails pricing_details);
+	public PricingDetails updatePricingDetails(PricingDetails pricingDetails);
 	
 	public void deletePricingDetails(Long id);
 

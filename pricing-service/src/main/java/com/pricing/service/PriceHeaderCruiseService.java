@@ -11,10 +11,4 @@ public interface PriceHeaderCruiseService {
 	
 	public PriceHeaderCruise findPriceHeaderCruiseById(Long id);
 	
-	public void createPriceHeaderCruise(PriceHeaderCruise priceHeaderCruise);
-	
-	public void updatePriceHeaderCruise(PriceHeaderCruise priceHeaderCruise);
-	
-	public void deletePriceHeaderCruise(Long id);
-
 }

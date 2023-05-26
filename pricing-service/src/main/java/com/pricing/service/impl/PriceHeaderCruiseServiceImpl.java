@@ -30,25 +30,5 @@ public class PriceHeaderCruiseServiceImpl implements PriceHeaderCruiseService {
 				.orElseThrow(()-> new NotFoundException(String.format("PriceHeaderCruise not found with ID %d", id)));
 		
 	}
-
-	@Override
-	public void createPriceHeaderCruise(PriceHeaderCruise priceHeaderCruise) {
-		priceHeaderCruiseRepository.save(priceHeaderCruise);
-		
-	}
-
-	@Override
-	public void updatePriceHeaderCruise(PriceHeaderCruise priceHeaderCruise) {
-		priceHeaderCruiseRepository.save(priceHeaderCruise);
-	}
-
-	@Override
-	public void deletePriceHeaderCruise(Long id) {
-		final PriceHeaderCruise pricingHeaderCruise = priceHeaderCruiseRepository.findById(id)
-				.orElseThrow(() -> new NotFoundException(String.format("PricingHeaderCruise not Found with ID %d",id)));
-		priceHeaderCruiseRepository.deleteById(pricingHeaderCruise.getId());
-		
-	}
-
 	
 }

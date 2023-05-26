@@ -10,9 +10,9 @@ public interface PricingHeaderService {
 	
 	public PricingHeader findPricingHeaderById(Long pricingHeaderId);
 	
-	public void createPricingHeader(PricingHeader pricingHeader);
+	public PricingHeader createPricingHeader(PricingHeader pricingHeader);
 	
-	public void updatePricingHeader(PricingHeader pricingHeader);
+	public PricingHeader updatePricingHeader(PricingHeader pricingHeader);
 	
 	public void deletePricingHeader(Long pricingHeaderId);
 	
