@@ -8,6 +8,8 @@ import com.reservation.entity.BookingItem;
 import com.reservation.repository.BookingItemRepository;
 import com.reservation.service.BookingItemService;
 
+import common.exception.NotFoundException;
+
 @Service
 public class BookingItemImpl implements BookingItemService{
 	
@@ -20,26 +22,14 @@ public class BookingItemImpl implements BookingItemService{
 	}
 
 	@Override
-	public List<BookingItem> findAllPassengers() {
-		return bookingItemRepository.findAll();;
+	public List<BookingItem> findAllBookingItem() {
+		return bookingItemRepository.findAll();
 	}
 
 	@Override
-	public BookingItem findBookingItemById(Long BookingItemId) {		
-		return bookingItemRepository.findById(BookingItemId)
+	public BookingItem findBookingItemById(Long bookingItemId) {		
+		return bookingItemRepository.findById(bookingItemId)
 				.orElseThrow(()-> new NotFoundException(String.format("Booking item not found with ID %d",bookingItemId)));
-	}
-
-	@Override
-	public void createBookingItem(BookingItem bookingItem) {
-		bookingItemRepository.save(bookingItem);
-		
-	}
-
-	@Override
-	public void updateBookingItem(BookingItem bookingItem) {
-		bookingItemRepository.save(bookingItem);
-		
 	}
 
 	@Override

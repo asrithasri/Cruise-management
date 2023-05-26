@@ -9,6 +9,8 @@ import com.reservation.entity.BookingCharges;
 import com.reservation.repository.BookingChargesRepository;
 import com.reservation.service.BookingChargesService;
 
+import common.exception.NotFoundException;
+
 @Service
 public class BookingChargesImpl implements BookingChargesService {
 	
@@ -22,32 +24,35 @@ public class BookingChargesImpl implements BookingChargesService {
 
 	@Override
 	public List<BookingCharges> findAllBookingCharges() {
-		// TODO Auto-generated method stub
-		return null;
+		return bookingChargesRepository.findAll();
 	}
 
 	@Override
 	public BookingCharges findBookingChargesById(Long bookingChargesId) {
-		// TODO Auto-generated method stub
-		return null;
+		return bookingChargesRepository.findById(bookingChargesId)
+				.orElseThrow(() -> new NotFoundException(String.format("Booking Charges not found with ID %d",bookingChargesId)));
 	}
 
 	@Override
-	public void createBookingCharges(BookingCharges bookingCharges) {
-		// TODO Auto-generated method stub
+	public BookingCharges createBookingCharges(BookingCharges bookingCharges) {
+		return bookingChargesRepository.save(bookingCharges);
 		
 	}
 
 	@Override
-	public void updateBookingCharges(BookingCharges bookingCharges) {
-		// TODO Auto-generated method stub
+	public BookingCharges updateBookingCharges(BookingCharges bookingCharges) {
+		BookingCharges exsistingBookingCharges = bookingChargesRepository.findById(bookingCharges.getBookingChargesId()).get();
+		exsistingBookingCharges.setPrice(bookingCharges.getPrice());
+		return bookingChargesRepository.save(exsistingBookingCharges);
 		
 	}
 
 	@Override
 	public void deleteBookingCharges(Long bookingChargesId) {
-		// TODO Auto-generated method stub
+		final BookingCharges bookingCharges = bookingChargesRepository.findById(bookingChargesId)
+				.orElseThrow(() -> new NotFoundException(String.format("Booking Charges not found with ID %d",bookingChargesId)));
 		
+		bookingChargesRepository.deleteById(bookingCharges.getBookingChargesId());
 	}
 
 	

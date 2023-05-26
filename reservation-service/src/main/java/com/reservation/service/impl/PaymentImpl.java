@@ -4,9 +4,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.reservation.entity.Passenger;
 import com.reservation.entity.Payment;
 import com.reservation.repository.PaymentRepository;
 import com.reservation.service.PaymentService;
+
+import common.exception.NotFoundException;
 
 @Service
 public class PaymentImpl implements PaymentService{
@@ -32,14 +35,17 @@ public class PaymentImpl implements PaymentService{
 	}
 
 	@Override
-	public void createPayment(Payment payment) {
-		paymentRepository.save(payment);
+	public Payment createPayment(Payment payment) {
+		return paymentRepository.save(payment);
 		
 	}
 
 	@Override
-	public void updatePayment(Payment payment) {
-		paymentRepository.save(payment);
+	public Payment updatePayment(Payment payment) {
+		Payment exsistingPayment = paymentRepository.findById(payment.getPayId()).get();
+		exsistingPayment.setPayStatus(payment.getPayStatus());
+		exsistingPayment.setTotalAmount(payment.getTotalAmount());
+		return paymentRepository.save(exsistingPayment);
 		
 	}
 

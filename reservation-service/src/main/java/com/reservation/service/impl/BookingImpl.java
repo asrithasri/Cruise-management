@@ -9,6 +9,8 @@ import com.reservation.entity.Booking;
 import com.reservation.repository.BookingRepository;
 import com.reservation.service.BookingService;
 
+import common.exception.NotFoundException;
+
 @Service
 public class BookingImpl implements BookingService{
 	@Autowired
@@ -21,32 +23,41 @@ public class BookingImpl implements BookingService{
 
 	@Override
 	public List<Booking> findAllBookings() {
-		// TODO Auto-generated method stub
-		return null;
+		return bookingRepository.findAll();
 	}
 
 	@Override
 	public Booking findBookingById(Long bookingId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return bookingRepository.findById(bookingId)
+				.orElseThrow(() -> new NotFoundException(String.format("Booking not found with ID %d", bookingId)));
 	}
 
 	@Override
-	public void createBooking(Booking booking) {
-		// TODO Auto-generated method stub
+	public Booking createBooking(Booking booking) {
+		return bookingRepository.save(booking);
 		
 	}
 
 	@Override
-	public void updateBooking(Booking booking) {
-		// TODO Auto-generated method stub
+	public Booking updateBooking(Booking booking) {
+		Booking existingBooking = bookingRepository.findById(booking.getBookingId()).get();	
+		existingBooking.setNoOfPassenger(booking.getNoOfPassenger());
+		existingBooking.setDeparture(booking.getDeparture());
+		existingBooking.setDestination(booking.getDestination());
+		existingBooking.setDateOfTravel(booking.getDateOfTravel());
+		existingBooking.setBookingStatus(booking.getBookingStatus());
+		existingBooking.setBookedDate(booking.getBookedDate());
+		return bookingRepository.save(existingBooking);
 		
 	}
 
 	@Override
 	public void deleteBooking(Long bookingId) {
-		// TODO Auto-generated method stub
+		final Booking booking = bookingRepository.findById(bookingId)
+				.orElseThrow(() -> new NotFoundException(String.format("Authornnot found with ID %d", bookingId)));
 		
+		bookingRepository.deleteById(booking.getBookingId());
 	}
 
 	

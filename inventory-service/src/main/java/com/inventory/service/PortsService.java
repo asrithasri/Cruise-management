@@ -10,9 +10,9 @@ public interface PortsService {
 	
 	public Ports findPortsById(Long portsId);
 	
-	public void createPorts(Ports ports);
+	public Ports createPorts(Ports ports);
 	
-	public void updatePorts(Ports ports);
+	public Ports updatePorts(Ports ports);
 	
 	public void deletePorts(Long portsId);
 	

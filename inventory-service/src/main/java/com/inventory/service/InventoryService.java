@@ -11,9 +11,9 @@ public interface InventoryService {
 	
 	public Inventory findInventoryById(Long inventoryId);
 	
-	public void createInventory(Inventory inventory);
+	public Inventory createInventory(Inventory inventory);
 	
-	public void updateInventory(Inventory inventory);
+	public Inventory updateInventory(Inventory inventory);
 	
 	public void deleteInventory(Long inventoryId);
 	
