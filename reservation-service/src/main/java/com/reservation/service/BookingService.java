@@ -6,7 +6,7 @@ import com.reservation.entity.Booking;
 
 public interface BookingService {
 
-	public List<Booking> findAllBookings();
+	public Booking findAllBookings();
 	
 	public Booking findBookingById(Long bookingId);
 	
