@@ -35,6 +35,7 @@ public class BookingImpl implements BookingService{
 
 	@Override
 	public Booking createBooking(Booking booking) {
+		
 		return bookingRepository.save(booking);
 		
 	}
