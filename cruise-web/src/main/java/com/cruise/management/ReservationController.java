@@ -17,11 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.reservation.entity.Booking;
 import com.reservation.entity.BookingCharges;
+import com.reservation.entity.BookingItem;
+import com.reservation.entity.Passenger;
 import com.reservation.service.BookingChargesService;
 import com.reservation.service.BookingItemService;
 import com.reservation.service.BookingService;
 import com.reservation.service.PassengerService;
 import com.reservation.service.PaymentService;
+
+import common.exception.NotFoundException;
 
 @Controller
 @RequestMapping("/reservation")
@@ -29,9 +33,13 @@ public class ReservationController {
 
 	@Autowired
 	private final BookingService bookingService;
+	@Autowired
 	private final PassengerService passengerService;
+	@Autowired
 	private final BookingItemService bookingItemService;
+	@Autowired
 	private final BookingChargesService bookingChargesService; 
+	@Autowired
 	private final PaymentService paymentService;
 	
 	public ReservationController(BookingService bookingService,
@@ -83,6 +91,89 @@ public class ReservationController {
 	bookingChargesService.deleteBookingCharges(bookingChargesId);
 	}
 	
+	
+	@GetMapping("/bookings")
+	public List<Booking> getAllBookings() {
+		return bookingService.findAllBookings();
+	}
 
+	@GetMapping("/bookings/{bookingId}")
+	public Booking getBookingById(@PathVariable Long bookingId) {
+		return bookingService.findBookingById(bookingId);
+	}
 
+	@PostMapping("/bookings")
+	public Booking createBooking(@RequestBody Booking booking) {
+		return bookingService.createBooking(booking);
+	}
+
+	@PostMapping("/bookings/{bookingId}")
+	public Booking updateBooking(@PathVariable Long bookingId, @RequestBody Booking booking) {
+		return bookingService.updateBooking(booking);
+	}
+
+	@PostMapping("/bookings/{bookingId}")
+	public void deleteBooking(@PathVariable Long bookingId) {
+		bookingService.deleteBooking(bookingId);
+	}
+
+    @GetMapping
+    public ResponseEntity<List<BookingItem>> getAllBookingItems() {
+        List<BookingItem> bookingItems = bookingItemService.findAllBookingItem();
+        return new ResponseEntity<>(bookingItems, HttpStatus.OK);
+    }
+
+    @GetMapping("/{bookingItemId}")
+    public ResponseEntity<BookingItem> getBookingItemById(@PathVariable Long bookingItemId) {
+        BookingItem bookingItem = bookingItemService.findBookingItemById(bookingItemId);
+        return new ResponseEntity<>(bookingItem, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{bookingItemId}")
+    public ResponseEntity<Void> deleteBookingItem(@PathVariable Long bookingItemId) {
+        try {
+            bookingItemService.deleteBookingItem(bookingItemId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @GetMapping
+    public ResponseEntity<List<Passenger>> getAllPassengers() {
+        List<Passenger> passengers = passengerService.findAllPassengers();
+        return new ResponseEntity<>(passengers, HttpStatus.OK);
+    }
+
+    @GetMapping("/{passId}")
+    public ResponseEntity<Passenger> getPassengerById(@PathVariable Long passId) {
+        Passenger passenger = passengerService.findPassengerById(passId);
+        return new ResponseEntity<>(passenger, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Passenger> createPassenger(@RequestBody Passenger passenger) {
+        Passenger createdPassenger = passengerService.createPassenger(passenger);
+        return new ResponseEntity<>(createdPassenger, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{passId}")
+    public ResponseEntity<Passenger> updatePassenger(
+            @PathVariable Long passId,
+            @RequestBody Passenger passenger) {
+        passenger.setPassId(passId);
+        Passenger updatedPassenger = passengerService.updatePassenger(passenger);
+        return new ResponseEntity<>(updatedPassenger, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{passId}")
+    public ResponseEntity<Void> deletePassenger(@PathVariable Long passId) {
+        try {
+            passengerService.deletePassenger(passId);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (NotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    
+    }
 }

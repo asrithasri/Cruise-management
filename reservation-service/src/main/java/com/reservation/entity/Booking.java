@@ -43,7 +43,7 @@ public class Booking {
 	Payment payment;
 	
 	public Booking() {		
-		super();		
+				
 	}
 
 	public Booking(Integer noOfPassenger,
@@ -54,7 +54,6 @@ public class Booking {
 			Date bookedDate,
 			Payment payment) {
 		
-		super();
 		this.noOfPassenger = noOfPassenger;
 		this.departure = departure;
 		this.destination = destination;

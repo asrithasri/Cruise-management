@@ -38,6 +38,5 @@ public class BookingItemImpl implements BookingItemService{
 				.orElseThrow(()-> new NotFoundException(String.format("Booking item not found with ID %d",bookingItemId)));
 		
 	}
-
 	
 }

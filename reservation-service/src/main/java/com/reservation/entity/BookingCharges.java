@@ -32,14 +32,12 @@ public class BookingCharges {
 
 	public BookingCharges() {
 		
-		super();
 	}
 
 	public BookingCharges(BookingItem booking_item,
 			Passenger passenger,
 			Integer price) {
 		
-		super();
 		this.booking_item = booking_item;
 		this.passenger = passenger;
 		this.price = price;

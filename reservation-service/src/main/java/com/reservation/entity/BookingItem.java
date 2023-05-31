@@ -40,7 +40,6 @@ public class BookingItem {
 	Inventory inventory;
 
 	public BookingItem() {
-		super();
 	}
 
 	public BookingItem(Booking booking,
@@ -48,7 +47,6 @@ public class BookingItem {
 			Cruise cruise,
 			Inventory inventory) {
 		
-		super();
 		this.booking = booking;
 		this.pricing_details = pricing_details;
 		this.cruise = cruise;
