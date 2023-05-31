@@ -25,7 +25,7 @@ import com.inventory.service.ShipService;
 
 import ch.qos.logback.core.model.Model;
 @RestController
-@RequestMapping()
+@RequestMapping("/inventory")
 public class InventoryController {
 	@Autowired
 	private final CruiseService cruiseService;
