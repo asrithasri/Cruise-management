@@ -29,14 +29,12 @@ public class Payment {
 	private String payStatus;
 
 	public Payment() {
-		super();
 	}
 
 	public Payment(Booking booking,
 			Integer totalAmount,
 			String payStatus) {
 		
-		super();
 		this.booking = booking;
 		this.totalAmount = totalAmount;
 		this.payStatus = payStatus;

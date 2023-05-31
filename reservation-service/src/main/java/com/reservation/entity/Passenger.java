@@ -47,7 +47,6 @@ public class Passenger {
 	private Integer phoneNo;
 
 	public Passenger() {
-		super();
 	}
 
 	public Passenger(Booking booking,
@@ -60,7 +59,6 @@ public class Passenger {
 			String emailId,
 			Integer phoneNo) {
 		
-		super();
 		this.booking = booking;
 		this.passportNo = passportNo;
 		this.firstName = firstName;
